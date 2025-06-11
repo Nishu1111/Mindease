@@ -1,27 +1,23 @@
-// src/App.jsx
-import React, { useState } from "react";
-import SelectEmotion from "./components/SelectEmotion";
+/**import { motion } from "framer-motion";
+
+<motion.div
+  className="min-h-screen bg-gradient-to-br from-blue-50 to-pink-100 flex items-center justify-center"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.8 }}
+>
+  <SelectEmotion
+    selectedEmotion={selectedEmotion}
+    onSelect={handleSelect}
+  />
+</motion.div>
+// App.jsx or Routes.jsx**/
+
+import React from "react";
+import EmotionBlobSelection from "./components/EmotionBlobSelection";
 
 function App() {
-  const [selectedEmotion, setSelectedEmotion] = useState("");
-
-  return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-      <SelectEmotion
-        selectedEmotion={selectedEmotion}
-        onSelect={(emotion) => {
-          setSelectedEmotion(emotion);
-          console.log("Selected emotion:", emotion); // for testing
-        }}
-      />
-
-      {selectedEmotion && (
-        <div className="mt-6 text-xl text-gray-800">
-          You selected: <strong>{selectedEmotion}</strong>
-        </div>
-      )}
-    </div>
-  );
+  return <EmotionBlobSelection />;
 }
 
 export default App;
