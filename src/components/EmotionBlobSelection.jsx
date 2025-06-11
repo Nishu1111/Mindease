@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function EmotionBlobSelection() {
-  const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
 
   const tips = {
     Sad: "It's okay to feel sad. Let it pass gently like the clouds.",
@@ -11,9 +12,12 @@ export default function EmotionBlobSelection() {
     Lonely: "Even in silence, the universe is with you.",
   };
 
+  const handleSelect = (emotion) => {
+    navigate("/suggestions", { state: { emotion } });
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden flex items-center justify-center px-4">
-
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-[-2]"
@@ -37,26 +41,16 @@ export default function EmotionBlobSelection() {
         <h2 className="text-3xl font-bold">How Are You Feeling?</h2>
 
         <div className="space-y-2">
-          {["Sad", "Anxious", "Angry", "Overwhelmed", "Lonely"].map((emotion) => (
+          {Object.keys(tips).map((emotion) => (
             <button
               key={emotion}
-              onClick={() => setSelected(emotion)}
-              className={`w-full py-2 rounded transition font-medium ${
-                selected === emotion
-                  ? "bg-white/70 text-black font-semibold scale-105"
-                  : "bg-white/30 hover:bg-white/50"
-              }`}
+              onClick={() => handleSelect(emotion)}
+              className="w-full py-2 rounded transition font-medium bg-white/30 hover:bg-white/50"
             >
               {emotion}
             </button>
           ))}
         </div>
-
-        {selected && (
-          <div className="mt-4 px-3 py-2 bg-white/20 rounded text-sm animate-fade-in text-white">
-            {tips[selected]}
-          </div>
-        )}
       </div>
     </div>
   );

@@ -12,12 +12,22 @@
   />
 </motion.div>
 // App.jsx or Routes.jsx**/
-
 import React from "react";
-import EmotionBlobSelection from "./components/EmotionBlobSelection";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import EmotionBlobSelection from "./components/EmotionBlobSelection"; // ✅ Update path
+import SuggestionPage from "./pages/SuggestionPage"; // existing
 
 function App() {
-  return <EmotionBlobSelection />;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<EmotionBlobSelection />} />
+        <Route path="/suggestions" element={<SuggestionPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
+
+
