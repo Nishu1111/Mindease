@@ -25,3 +25,4 @@ dist-ssr
 node_modules/
 dist/
 .env/
+public/home_bg.mp4
