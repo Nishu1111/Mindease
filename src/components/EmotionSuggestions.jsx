@@ -22,3 +22,5 @@ export default function EmotionSuggestions({ emotion }) {
     </div>
   );
 }
+
+

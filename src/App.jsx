@@ -1,33 +1,33 @@
-/**import { motion } from "framer-motion";
-
-<motion.div
-  className="min-h-screen bg-gradient-to-br from-blue-50 to-pink-100 flex items-center justify-center"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.8 }}
->
-  <SelectEmotion
-    selectedEmotion={selectedEmotion}
-    onSelect={handleSelect}
-  />
-</motion.div>
-// App.jsx or Routes.jsx**/
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import EmotionBlobSelection from "./components/EmotionBlobSelection"; // ✅ Update path
-import SuggestionPage from "./pages/SuggestionPage"; // existing
+import React, { useEffect } from "react";
+//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import EmotionBlobSelection from "./components/EmotionBlobSelection";
+import SuggestionPage from "./pages/SuggestionPage";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
 
 function App() {
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/")
+      .then((res) => res.json())
+      .then((data) => console.log(data.message));
+  }, []);
+
   return (
-    <Router>
       <Routes>
-        <Route path="/" element={<EmotionBlobSelection />} />
+  <Route path="/" element={<EmotionBlobSelection />} />
         <Route path="/suggestions" element={<SuggestionPage />} />
-      </Routes>
-    </Router>
-  );
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+</Routes>
+  )
 }
 
 export default App;
+
+
+
+
+
 
 

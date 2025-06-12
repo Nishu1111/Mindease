@@ -1,5 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+const handleEmotionClick = async (emotion) => {
+  setSelected(emotion);
+  try {
+    const response = await fetch("http://127.0.0.1:8000/save-emotion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ emotion }),
+    });
+    const result = await response.json();
+    console.log(result.message);
+  } catch (error) {
+    console.error("Error saving emotion:", error);
+  }
+};
 
 export default function EmotionBlobSelection() {
   const navigate = useNavigate();
@@ -49,6 +65,7 @@ export default function EmotionBlobSelection() {
             >
               {emotion}
             </button>
+            
           ))}
         </div>
       </div>

@@ -21,7 +21,7 @@ module.exports = {
     extend: {
   animation: {
     blob: "blob 7s infinite",
-    'fade-in': 'fadeIn 1s ease-out forwards',
+    'fade-in': 'fadeIn 0.8s ease-out forwards',
   },
   keyframes: {
     blob: {
@@ -38,4 +38,5 @@ module.exports = {
   },
   plugins: [],
 };
+
 
