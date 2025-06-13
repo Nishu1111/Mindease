@@ -1,5 +1,5 @@
+//main routing components
 import React, { useEffect } from "react";
-//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import EmotionBlobSelection from "./components/EmotionBlobSelection";
 import SuggestionPage from "./pages/SuggestionPage";
@@ -20,8 +20,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 </Routes>
+
   )
 }
+
 
 export default App;
 

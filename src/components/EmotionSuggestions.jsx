@@ -1,5 +1,5 @@
 // src/components/EmotionSuggestions.jsx
-import React from "react";
+/*import React from "react";
 
 const suggestions = {
   Happy: ["Write a gratitude note", "Share a smile", "Capture the moment"],
@@ -22,5 +22,5 @@ export default function EmotionSuggestions({ emotion }) {
     </div>
   );
 }
-
+*/
 
