@@ -5,6 +5,9 @@ import EmotionBlobSelection from "./components/EmotionBlobSelection";
 import SuggestionPage from "./pages/SuggestionPage";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
+import HomePage from "./pages/HomePage";
+
+
 
 function App() {
   useEffect(() => {
@@ -19,6 +22,8 @@ function App() {
         <Route path="/suggestions" element={<SuggestionPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
 </Routes>
 
   )

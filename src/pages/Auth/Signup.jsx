@@ -25,6 +25,7 @@ export default function Signup() {
 
 
   return (
+    
     <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">
       <h1 className="text-3xl mb-4 font-bold">Signup</h1>
       <input
@@ -48,5 +49,6 @@ export default function Signup() {
         Register
       </button>
     </div>
+    
   );
 }

@@ -18,9 +18,9 @@ export default function Login() {
         const error = await res.json();
         throw new Error(error.detail || "Login failed");
       }
-
       alert("Login successful!");
-      navigate("/home");
+localStorage.setItem("userEmail", email);
+navigate("/home");
     } catch (err) {
       alert("Login error: " + err.message);
     }
