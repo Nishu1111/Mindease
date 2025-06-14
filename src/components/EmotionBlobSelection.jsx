@@ -33,16 +33,8 @@ export default function EmotionBlobSelection() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden flex items-center justify-center px-4">
-      {/* Background Video */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-2]"
-        src="/home_bg.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      ></video>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cover bg-center px-4"
+     style={{ backgroundImage: "url('src/home_bg.jpg')" }}>
 
       {/* Optional dark overlay */}
       <div className="absolute inset-0 bg-black/50 z-[-1]"></div>
