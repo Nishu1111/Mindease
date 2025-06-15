@@ -5,9 +5,7 @@ import EmotionBlobSelection from "./components/EmotionBlobSelection";
 import SuggestionPage from "./pages/SuggestionPage";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
-import HomePage from "./pages/HomePage";
-
-
+import HomePage from "./pages/HomePage";import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   useEffect(() => {
@@ -19,22 +17,31 @@ function App() {
   return (
       <Routes>
   <Route path="/" element={<EmotionBlobSelection />} />
-        <Route path="/suggestions" element={<SuggestionPage />} />
+        <Route path="/suggestions" element={<ProtectedRoute><SuggestionPage /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
-</Routes>
-
-  )
+        <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+   <Route
+        path="/home"
+        element={
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/suggestions"
+        element={
+          <ProtectedRoute>
+            <SuggestionPage />
+          </ProtectedRoute>
+        }
+        
+      />
+    </Routes>
+  );
 }
 
 
+
 export default App;
-
-
-
-
-
-
-

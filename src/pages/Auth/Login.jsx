@@ -1,3 +1,4 @@
+// src/pages/Auth/Login.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,9 +19,14 @@ export default function Login() {
         const error = await res.json();
         throw new Error(error.detail || "Login failed");
       }
+
+      const data = await res.json();
+      // ✅ Store login status
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("email", email);
+
       alert("Login successful!");
-localStorage.setItem("userEmail", email);
-navigate("/home");
+      navigate("/home");
     } catch (err) {
       alert("Login error: " + err.message);
     }

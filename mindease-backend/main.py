@@ -65,3 +65,10 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
 @app.get("/")
 def read_root():
     return {"message": "Backend is running"}
+
+from database import Base, engine
+from models import User, EmotionEntry
+
+# Create tables
+Base.metadata.create_all(bind=engine)
+
