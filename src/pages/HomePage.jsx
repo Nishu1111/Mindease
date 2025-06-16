@@ -76,6 +76,13 @@ export default function HomePage() {
       >
         Logout
       </button>
+      <button
+  onClick={() => navigate("/history")}
+  className="mt-4 bg-white text-purple-700 font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-purple-100 transition"
+>
+  View My History
+</button>
+
     </div>
   );
 }

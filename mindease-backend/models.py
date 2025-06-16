@@ -16,3 +16,16 @@ class EmotionEntry(Base):
     user_email = Column(String, ForeignKey("users.email"))
     emotion = Column(String)
     timestamp = Column(DateTime, default=datetime.utcnow)
+
+class EmotionHistory(Base):
+    __tablename__ = "emotion_history"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, index=True)
+    emotion = Column(String)
+    suggestion = Column(String)
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
+
+
+

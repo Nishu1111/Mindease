@@ -5,6 +5,8 @@ from sqlalchemy.orm import Session
 from passlib.hash import bcrypt
 from database import SessionLocal
 from models import User  # your SQLAlchemy model
+from database import engine
+from models import Base  # This imports the models with the EmotionHistory
 
 app = FastAPI()
 
@@ -61,6 +63,31 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
 
     return {"message": "Login successful", "user": {"id": user.id, "email": user.email}}
 
+@app.post("/save-emotion")
+def save_emotion(data: dict, db: Session = Depends(get_db)):
+    new_record = EmotionHistory(
+        email=data["email"],
+        emotion=data["emotion"],
+        suggestion=data["suggestion"]
+    )
+
+#for front user fetch history
+    db.add(new_record)
+    db.commit()
+    return {"message": "Emotion saved"}
+@app.get("/get-history")
+def get_history(email: str, db: Session = Depends(get_db)):
+    history = db.query(EmotionHistory).filter(EmotionHistory.email == email).all()
+    return [
+        {
+            "emotion": record.emotion,
+            "suggestion": record.suggestion,
+            "timestamp": record.timestamp.strftime("%Y-%m-%d %H:%M")
+        }
+        for record in history
+    ]
+
+
 # Root endpoint
 @app.get("/")
 def read_root():
@@ -71,4 +98,5 @@ from models import User, EmotionEntry
 
 # Create tables
 Base.metadata.create_all(bind=engine)
+
 

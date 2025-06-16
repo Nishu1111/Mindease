@@ -5,7 +5,9 @@ import EmotionBlobSelection from "./components/EmotionBlobSelection";
 import SuggestionPage from "./pages/SuggestionPage";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
-import HomePage from "./pages/HomePage";import ProtectedRoute from "./components/ProtectedRoute";
+import HomePage from "./pages/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import HistoryPage from "./pages/HistoryPage";
 
 function App() {
   useEffect(() => {
@@ -38,7 +40,17 @@ function App() {
         }
         
       />
+      <Route
+  path="/history"
+  element={
+    <ProtectedRoute>
+      <HistoryPage />
+    </ProtectedRoute>
+  }
+/>
+
     </Routes>
+    
   );
 }
 
